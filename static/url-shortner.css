@@ -1,0 +1,90 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #333;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    color: #0a4d66;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #0a4d66;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #085a73;
+}
+
+.response-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text-holder {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.copy-btn {
+    margin-top: 10px;
+    background-color: #555;
+}
+
+.copy-btn:hover {
+    background-color: #333;
+}
+
+/* Success and Error Styles */
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.status-code {
+    font-weight: bold;
+}

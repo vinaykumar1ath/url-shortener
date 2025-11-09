@@ -1,0 +1,4 @@
+node_modules/
+go-sqlite-server/*
+!go-sqlite-server/main.go
+cloudflare/
