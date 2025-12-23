@@ -1,20 +1,21 @@
-FROM golang AS gobuild
+FROM official/golang:1.25.4 AS gobuild
 
-WORKDIR /sql-server
+WORKDIR /go-sqlite-server/
 
-COPY go-sqlite-server/ /sql-server
+COPY go-sqlite-server/ ./
 
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    go mod init url-shortenersql-server && go mod tidy
+    go mod init url-shortener/sql-server && go mod tidy
 
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=0 go build -ldflags="-s -w" -o sql-server
 
-FROM node:18-alpine AS urls
 
-COPY --link --from=gobuild /sql-server/sql-server /sql-server/sql-server
+FROM official/node:18-alpine AS urls
+
+COPY --from=gobuild /go-sqlite-server/sql-server /sql-server
 
 WORKDIR /url-shortener
 
@@ -28,8 +29,4 @@ COPY  static/ ./static
 
 COPY server.js .
 
-EXPOSE 5000
-
-ENV PORT=5000
-
-CMD ["sh", "-c", "/sql-server/sql-server & node server.js"]
+CMD ["sh", "-c", "/sql-server & node server.js"]
